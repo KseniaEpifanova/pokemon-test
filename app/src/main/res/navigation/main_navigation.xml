@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start_navigation"
+    app:startDestination="@id/splashFragment"
+    tools:ignore="UnusedNavigation">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="ru.ksuta.pokemonowltest.ui.fragment.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/action_splashFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="ru.ksuta.pokemonowltest.ui.fragment.MainMenuFragment"
+        android:label="MainMenuFragment" />
+</navigation>
