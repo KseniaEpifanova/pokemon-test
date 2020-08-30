@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ru.ksuta.pokemonowltest.R
+import ru.ksuta.pokemonowltest.di.FragmentScope
 import ru.ksuta.pokemonowltest.util.NavRouter
 
+@FragmentScope
 class SplashFragment : BaseFragment() {
 
 

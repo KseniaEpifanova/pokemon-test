@@ -1,5 +1,7 @@
 package ru.ksuta.pokemonowltest.models
 
+import com.google.gson.annotations.SerializedName
+
 data class PokemonSprites (
-    var front_default: String
+    @SerializedName("front_default")  var front_default: String? = ""
 )

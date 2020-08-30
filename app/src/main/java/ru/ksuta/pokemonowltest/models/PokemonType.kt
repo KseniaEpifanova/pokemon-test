@@ -1,6 +1,8 @@
 package ru.ksuta.pokemonowltest.models
 
+import com.google.gson.annotations.SerializedName
+
 data class PokemonType(
-    var id:Int
+    @SerializedName("id")  var id:Int
 
 )
