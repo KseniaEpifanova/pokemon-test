@@ -11,8 +11,9 @@ import ru.ksuta.pokemonowltest.models.RemoteDataModel
 import ru.ksuta.pokemonowltest.models.ResultModel
 import ru.ksuta.pokemonowltest.repository.MenuRepo
 import ru.ksuta.pokemonowltest.ui.vh.MenuViewHolder
+import ru.ksuta.pokemonowltest.util.AdapterClickInterface
 
-class MenuAdapter(private val repo: MenuRepo) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MenuAdapter(private val repo: MenuRepo,private val adapterPokemon : AdapterClickInterface<InfoPokemonModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var count: Int = -1
 
@@ -22,32 +23,21 @@ class MenuAdapter(private val repo: MenuRepo) : RecyclerView.Adapter<RecyclerVie
 
         val r = repo.getPokemonAll()
             ?.observeOn(AndroidSchedulers.mainThread())
-            ?.map {
-                it.results
-            }
-
-            ?.subscribe({
-
+            ?.map { it.results }
+            ?.subscribe({ list ->
                 var l: MutableList<InfoPokemonModel?>? = null
-                for (item in it!!) {
-                    var res = item.imageURL?.split("/")
-                    repo.getPokemon(res?.get(res.size-2)?.toInt()!!)
+                for (item in list!!) {
+                    val res = item.imageURL?.split("/")
+                    repo.getPokemon(res?.get(res.size - 2)?.toInt()!!)
                         ?.observeOn(AndroidSchedulers.mainThread())
                         ?.subscribe({
-
                             addToList(it)
-                            //Log.i("!!!!!!!!!!!!!!!!!", it.toString())
-                            //Log.i("!!!pokemons!!", pokemons.toString())
                         }, {
-                            Log.e("eeeeeeeeeeee", it.toString())
-
+                            Log.e("err", it.toString())
                         })
                 }
-               // setData()
-
-                Log.i("--------------", it.toString())
             }, {
-                Log.e("eeeeeeeeeeee", it.toString())
+                Log.e("err", it.toString())
             })
 
 
@@ -60,7 +50,7 @@ class MenuAdapter(private val repo: MenuRepo) : RecyclerView.Adapter<RecyclerVie
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),adapterPokemon
         )
     }
 
@@ -75,10 +65,10 @@ class MenuAdapter(private val repo: MenuRepo) : RecyclerView.Adapter<RecyclerVie
 
     }
 
-    fun addToList(i:InfoPokemonModel?){
-    pokemons.add(i)
+    fun addToList(i: InfoPokemonModel?) {
+        pokemons.add(i)
         notifyDataSetChanged()
-}
+    }
 
     fun setData(listPokemon: List<InfoPokemonModel?>) {
         pokemons.addAll(listPokemon)

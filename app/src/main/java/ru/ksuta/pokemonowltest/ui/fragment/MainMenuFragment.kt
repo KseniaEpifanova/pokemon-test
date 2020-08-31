@@ -7,15 +7,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import ru.ksuta.pokemonowltest.databinding.FragmentMenuBinding
 import ru.ksuta.pokemonowltest.di.FragmentScope
+import ru.ksuta.pokemonowltest.models.InfoPokemonModel
 import ru.ksuta.pokemonowltest.repository.MenuRepo
 import ru.ksuta.pokemonowltest.repository.PokemonApiInterface
 import ru.ksuta.pokemonowltest.ui.adapters.MenuAdapter
+import ru.ksuta.pokemonowltest.util.AdapterClickInterface
 import javax.inject.Inject
 
 @FragmentScope
@@ -27,9 +31,6 @@ class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var menuAdapter: MenuAdapter
 
     private lateinit var binding: FragmentMenuBinding
-
-    @set:Inject
-    internal lateinit var api: PokemonApiInterface
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,9 +44,20 @@ class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        menuAdapter = MenuAdapter(repo)
-       // buildService(PokemonApiInterface)
-        //ServiceBuilder.buildService(PokemonApiInterface)
+
+
+        val adapterInterface = object : AdapterClickInterface<InfoPokemonModel> {
+            override fun onItemClicked(pos: Int, item: InfoPokemonModel?) {
+                if (item == null)
+                    return
+
+                Toast.makeText(context, item.name, LENGTH_LONG).show()
+                //val bundle = Bundle()
+                //bundle.putString("menuRef", item.menuRef)
+               // navCtr.navigate(R.id.action_mainFragment_to_institutionsViewFragment, bundle)
+            }
+        }
+        menuAdapter = MenuAdapter(repo,adapterInterface)
         binding.adapterList = menuAdapter
 
 
