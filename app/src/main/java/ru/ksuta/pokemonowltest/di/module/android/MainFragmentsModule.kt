@@ -4,6 +4,7 @@ package ru.ksuta.pokemonowltest.di.module.android
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import ru.ksuta.pokemonowltest.di.FragmentScope
+import ru.ksuta.pokemonowltest.ui.fragment.InfoPokemonFragment
 import ru.ksuta.pokemonowltest.ui.fragment.MainMenuFragment
 import ru.ksuta.pokemonowltest.ui.fragment.SplashFragment
 
@@ -19,6 +20,8 @@ abstract class MainFragmentsModule {
 	@ContributesAndroidInjector
 	internal abstract fun bindMainMenuFragment(): MainMenuFragment
 
-
+	@FragmentScope
+	@ContributesAndroidInjector
+	internal abstract fun bindInfoPokemonFragment(): InfoPokemonFragment
 
 }

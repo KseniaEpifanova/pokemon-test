@@ -3,7 +3,6 @@ package ru.ksuta.pokemonowltest.ui.vh
 import android.view.View
 import ru.ksuta.pokemonowltest.databinding.ItemPokemonMenuBinding
 import ru.ksuta.pokemonowltest.models.InfoPokemonModel
-import ru.ksuta.pokemonowltest.models.RemoteDataModel
 import ru.ksuta.pokemonowltest.ui.vm.MainMenuViewModel
 import ru.ksuta.pokemonowltest.util.AdapterClickInterface
 

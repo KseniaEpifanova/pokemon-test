@@ -13,7 +13,7 @@ class RetrofitMenuRepo  @Inject constructor( private val retrofit:PokemonApiInte
 
 
 
-    override fun getPokemon(id: Int): Single<InfoPokemonModel?>? {
+    override fun getPokemonToId(id: Int): Single<InfoPokemonModel?>? {
         return retrofit.getPokemonInfo(id) ?.subscribeOn(Schedulers.io())
             ?.observeOn(Schedulers.computation())?.firstElement()?.toSingle()
     }

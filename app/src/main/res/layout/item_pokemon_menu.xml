@@ -42,6 +42,15 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_id"
+            android:layout_width="30dp"
+            android:layout_height="16dp"
+            android:gravity="center"
+            android:text="@{vm.id}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text = "1"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_menu"

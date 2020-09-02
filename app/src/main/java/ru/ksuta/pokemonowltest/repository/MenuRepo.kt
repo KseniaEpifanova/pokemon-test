@@ -10,7 +10,7 @@ import java.security.spec.PSSParameterSpec
 
 interface MenuRepo {
 
-    fun getPokemon(id:Int) : Single<InfoPokemonModel?>?
+    fun getPokemonToId(id:Int) : Single<InfoPokemonModel?>?
 
     fun getPokemonAll() : Observable<ResultModel?>?
 

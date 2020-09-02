@@ -5,9 +5,9 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import ru.ksuta.pokemonowltest.R
 import ru.ksuta.pokemonowltest.di.FragmentScope
-import ru.ksuta.pokemonowltest.util.NavRouter
 
 @FragmentScope
 class SplashFragment : BaseFragment() {
@@ -24,7 +24,7 @@ class SplashFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Handler().postDelayed({
-            NavRouter(this, R.id.action_splashFragment_to_mainMenuFragment).routTo()
+            findNavController().navigate(R.id.action_splashFragment_to_mainMenuFragment)
         }, 1500)
     }
 }

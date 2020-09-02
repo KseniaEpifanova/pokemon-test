@@ -7,7 +7,7 @@
 
         <variable
             name="infoVM"
-            type="I" />
+            type="ru.ksuta.pokemonowltest.ui.vm.InfoPokemonViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{infoVM.name}"
+            android:textSize="32sp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,25 +48,53 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{infoVM.name}"
-            app:layout_constraintTop_toBottomOf="@+id/view"
-            tools:text="1"/>
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/height"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{infoVM.height}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+            tools:text="1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{infoVM.name}"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/weight"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="10dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:text="@{infoVM.weight}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
             tools:text="2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{infoVM.name}"
+            android:layout_marginStart="16dp"
+            android:text="@{infoVM.stats}"
+            android:textSize="18sp"
             tools:text="3"
             app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
@@ -73,7 +102,9 @@
             android:id="@+id/appCompatTextView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{infoVM.name}"
+            android:layout_marginStart="16dp"
+            android:text="@{infoVM.types}"
+            android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4"
             tools:text="4"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

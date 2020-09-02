@@ -28,21 +28,22 @@ class MenuAdapter(private val repo: MenuRepo,private val adapterPokemon : Adapte
                 var l: MutableList<InfoPokemonModel?>? = null
                 for (item in list!!) {
                     val res = item.imageURL?.split("/")
-                    repo.getPokemon(res?.get(res.size - 2)?.toInt()!!)
+                    repo.getPokemonToId(res?.get(res.size - 2)?.toInt()!!)
                         ?.observeOn(AndroidSchedulers.mainThread())
                         ?.subscribe({
                             addToList(it)
+                            Log.i("!!!!!!!!!!!!!!!!!!!", it.toString())
+
                         }, {
                             Log.e("err", it.toString())
                         })
                 }
+                Log.i("!!!!!!!!!!!!!!!!!!!", list.toString())
             }, {
                 Log.e("err", it.toString())
             })
 
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MenuViewHolder(
@@ -59,10 +60,7 @@ class MenuAdapter(private val repo: MenuRepo,private val adapterPokemon : Adapte
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val institutionsListViewHolder = holder as MenuViewHolder
-
         institutionsListViewHolder.setData(pokemons[position]!!)
-
-
     }
 
     fun addToList(i: InfoPokemonModel?) {

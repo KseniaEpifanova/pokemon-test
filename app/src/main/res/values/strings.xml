@@ -1,4 +1,7 @@
 <resources>
 	<string name="app_name">PokemonOwlTest</string>
     <string name="pokemon">Pokemon</string>
+    <string name="height">Высота = </string>
+    <string name="weight">Вес = </string>
+
 </resources>

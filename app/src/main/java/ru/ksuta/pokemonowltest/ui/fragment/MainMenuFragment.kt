@@ -1,23 +1,21 @@
 package ru.ksuta.pokemonowltest.ui.fragment
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dagger.android.support.AndroidSupportInjection
-import io.reactivex.android.schedulers.AndroidSchedulers
+import ru.ksuta.pokemonowltest.R
 import ru.ksuta.pokemonowltest.databinding.FragmentMenuBinding
 import ru.ksuta.pokemonowltest.di.FragmentScope
 import ru.ksuta.pokemonowltest.models.InfoPokemonModel
 import ru.ksuta.pokemonowltest.repository.MenuRepo
-import ru.ksuta.pokemonowltest.repository.PokemonApiInterface
 import ru.ksuta.pokemonowltest.ui.adapters.MenuAdapter
 import ru.ksuta.pokemonowltest.util.AdapterClickInterface
 import javax.inject.Inject
@@ -42,7 +40,6 @@ class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         return binding.root
     }
 
-    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
@@ -51,20 +48,16 @@ class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 if (item == null)
                     return
 
-                Toast.makeText(context, item.name, LENGTH_LONG).show()
-                //val bundle = Bundle()
-                //bundle.putString("menuRef", item.menuRef)
-               // navCtr.navigate(R.id.action_mainFragment_to_institutionsViewFragment, bundle)
+                Toast.makeText(context, item.id.toString(), LENGTH_LONG).show()
+                val bundle = Bundle()
+                bundle.putString("idPoke", item.id.toString())
+                findNavController().navigate(R.id.action_mainMenuFragment_to_infoPokemonFragment,bundle)
             }
         }
         menuAdapter = MenuAdapter(repo,adapterInterface)
         binding.adapterList = menuAdapter
-
-
-
-
-
     }
+
 
     override fun onRefresh() {
         TODO("Not yet implemented")

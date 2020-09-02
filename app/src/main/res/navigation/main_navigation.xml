@@ -18,5 +18,15 @@
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="ru.ksuta.pokemonowltest.ui.fragment.MainMenuFragment"
-        android:label="MainMenuFragment" />
+        android:label="MainMenuFragment"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_mainMenuFragment_to_infoPokemonFragment"
+            app:destination="@id/infoPokemonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoPokemonFragment"
+        android:name="ru.ksuta.pokemonowltest.ui.fragment.InfoPokemonFragment"
+        android:label="InfoPokemonFragment"
+        tools:layout="@layout/fragment_info_pokemon"/>
 </navigation>

@@ -23,7 +23,7 @@ interface PokemonApiInterface {
 
 
     /**
-     * Получение данных покемона
+     * Получение данных покемона по id
      *
      * @param id - id of pokemon
      *
@@ -32,8 +32,19 @@ interface PokemonApiInterface {
      * @see Pokemon
      */
     @GET("pokemon/{id}")
-    fun getPokemonInfo(@Path("id") pokemonId: Int): Observable<InfoPokemonModel?>?
+    fun getPokemonInfo(@Path("id") id: Int): Observable<InfoPokemonModel?>?
 
 
+    /**
+     * Получение данных покемона по name
+     *
+     * @param name - name of pokemon
+     *
+     * @return pokemon's data
+     *
+     * @see Pokemon
+     */
+    @GET("pokemon/{name}")
+    fun getPokemonInfoName(@Path("name") pokemonName: String): Observable<InfoPokemonModel?>?
 
 }
