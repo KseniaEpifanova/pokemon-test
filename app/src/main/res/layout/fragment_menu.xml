@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools">
-	<data>
-		<variable
-			name="adapterList"
-			type="androidx.recyclerview.widget.RecyclerView.Adapter" />
-	</data>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <data>
+        <variable
+            name="adapterList"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+    </data>
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/list"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:adapter="@{adapterList}"
-			android:orientation="vertical"
-			app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-			app:spanCount="3"
-			tools:itemCount="8"
-			tools:listitem="@layout/item_pokemon_menu" />
-	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="75dp"
+            android:adapter="@{adapterList}"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_pokemon_menu" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="10dp"
+			android:textColor="@color/white"
+            android:onClick="@{()-> adapterList.notifyDataSetChanged()}"
+            android:text="@string/update"
+            android:background="@color/colorPrimary" />
+    </FrameLayout>
 </layout>

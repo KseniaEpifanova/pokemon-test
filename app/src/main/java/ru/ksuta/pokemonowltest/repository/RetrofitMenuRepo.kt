@@ -18,8 +18,8 @@ class RetrofitMenuRepo  @Inject constructor( private val retrofit:PokemonApiInte
             ?.observeOn(Schedulers.computation())?.firstElement()?.toSingle()
     }
 
-    override fun getPokemonAll(): Observable<ResultModel?>? {
-        return retrofit.getAllPokemon(20,0)?.subscribeOn(Schedulers.io())
+    override fun getPokemonAll(limit: Int, offset:Int): Observable<ResultModel?>? {
+        return retrofit.getAllPokemon(limit,offset)?.subscribeOn(Schedulers.io())
             ?.observeOn(Schedulers.computation())
 
     }

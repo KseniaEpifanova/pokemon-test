@@ -21,7 +21,7 @@ import ru.ksuta.pokemonowltest.util.AdapterClickInterface
 import javax.inject.Inject
 
 @FragmentScope
-class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class MainMenuFragment : Fragment() {
 
     @set:Inject
     internal lateinit var repo: MenuRepo
@@ -42,13 +42,11 @@ class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         val adapterInterface = object : AdapterClickInterface<InfoPokemonModel> {
             override fun onItemClicked(pos: Int, item: InfoPokemonModel?) {
                 if (item == null)
                     return
 
-                Toast.makeText(context, item.id.toString(), LENGTH_LONG).show()
                 val bundle = Bundle()
                 bundle.putString("idPoke", item.id.toString())
                 findNavController().navigate(R.id.action_mainMenuFragment_to_infoPokemonFragment,bundle)
@@ -56,11 +54,7 @@ class MainMenuFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
         menuAdapter = MenuAdapter(repo,adapterInterface)
         binding.adapterList = menuAdapter
-    }
 
-
-    override fun onRefresh() {
-        TODO("Not yet implemented")
     }
 
 }

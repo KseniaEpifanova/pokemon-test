@@ -12,8 +12,7 @@ interface MenuRepo {
 
     fun getPokemonToId(id:Int) : Single<InfoPokemonModel?>?
 
-    fun getPokemonAll() : Observable<ResultModel?>?
+    fun getPokemonAll(limit: Int, offset:Int) : Observable<ResultModel?>?
 
-    //fun getSpiites():Observable<List<PokemonSprites>>
-   // fun getTypo():Observable<List<PokemonType>>
+
 }

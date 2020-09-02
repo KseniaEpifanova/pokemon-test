@@ -48,6 +48,7 @@
             android:layout_height="16dp"
             android:gravity="center"
             android:text="@{vm.id}"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:text = "1"/>
